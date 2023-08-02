@@ -1,0 +1,16 @@
+# YAML Document starts with ---
+# Comments start with #
+# YAML Document ends with ...
+---
+Syscall: socket
+LSM_Probe: socket_create
+# support extract these information:
+# @family: protocol family (AF_INET, ...)
+# @type: communication type (SOCK_STREAM, ...)
+# @protocol: protocol (0, ...)
+# @kern: 0: userspace socket | 1 kernel space socket
+# EXAMPLE: Deny create socket type AF_LOCAL: 
+Condition: "type==AF_LOCAL" 
+Action: deny
+More_Info: ""
+...

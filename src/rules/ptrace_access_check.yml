@@ -1,0 +1,20 @@
+# YAML Document starts with ---
+# Comments start with #
+# YAML Document ends with ...
+---
+Syscall: ptrace
+LSM_Probe: ptrace_access_check
+# support extract these information:
+# data.child_pid: parent process flags
+# data.mode: ptrace mode as follow:
+# #define PTRACE_MODE_READ	0x01
+# define PTRACE_MODE_ATTACH	0x02
+# define PTRACE_MODE_NOAUDIT	0x04
+# define PTRACE_MODE_FSCREDS	0x08
+# #define PTRACE_MODE_REALCREDS	0x10
+
+# EXAMPLE: Allow trace process with ppid < 1000
+Condition: "data.child_pid<1000"
+Action: allow
+More_Info: ""
+...

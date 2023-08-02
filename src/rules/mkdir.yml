@@ -1,0 +1,10 @@
+# YAML Document starts with ---
+# Comments start with #
+# YAML Document ends with ...
+---
+Syscall: path_mkdir
+LSM_Probe: path_mkdir
+Condition: "data.inode == 12451843" 
+Action: allow
+More_Info: ""
+...

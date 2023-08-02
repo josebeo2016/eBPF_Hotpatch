@@ -1,0 +1,11 @@
+# YAML Document starts with ---
+# Comments start with #
+# YAML Document ends with ...
+---
+Syscall: clone
+LSM_Probe: vm_enough_memory
+# support uid of new or old cerd
+Condition: "data.task_size>=100"
+Action: deny
+More_Info: ""
+...

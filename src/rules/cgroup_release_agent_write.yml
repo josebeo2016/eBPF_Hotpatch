@@ -1,0 +1,13 @@
+# YAML Document starts with ---
+# Comments start with #
+# YAML Document ends with ...
+---
+Syscall: cgroup_release_agent_write
+LSM_Probe: cgroup_release_agent_write
+Condition: "" 
+Action: allow
+More_Info: ""
+...
+    
+    
+      

@@ -1,0 +1,42 @@
+# YAML Document starts with ---
+# Comments start with #
+# YAML Document ends with ...
+---
+Syscall: bind
+LSM_Probe: socket_bind
+# support extract these information:
+# @sock->state: socket status (linux/net.h)
+# typedef enum {
+# 	SS_FREE = 0,			/* not allocated		*/
+# 	SS_UNCONNECTED,			/* unconnected to any socket	*/
+# 	SS_CONNECTING,			/* in process of connecting	*/
+# 	SS_CONNECTED,			/* connected to socket		*/
+# 	SS_DISCONNECTING		/* in process of disconnecting	*/
+# } socket_state;
+# @sock->type: socket type (linux/net.h)
+# enum sock_type {
+# 	SOCK_STREAM	= 1,
+# 	SOCK_DGRAM	= 2,
+# 	SOCK_RAW	= 3,
+# 	SOCK_RDM	= 4,
+# 	SOCK_SEQPACKET	= 5,
+# 	SOCK_DCCP	= 6,
+# 	SOCK_PACKET	= 10,
+# };
+# @sock->flags: socket flag (linux/net.h)
+#define SOCKWQ_ASYNC_NOSPACE	0
+#define SOCKWQ_ASYNC_WAITDATA	1
+#define SOCK_NOSPACE		2
+#define SOCK_PASSCRED		3
+#define SOCK_PASSSEC		4
+
+# @data.port: bind port
+# @data.address: bind address
+# @data.family: bind socket family
+# @data.protocol: bind protocol
+# EXAMPLE: Deny bind port 8080
+
+Condition: "data.port==8080" 
+Action: deny
+More_Info: ""
+...

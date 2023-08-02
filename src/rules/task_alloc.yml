@@ -1,0 +1,11 @@
+# YAML Document starts with ---
+# Comments start with #
+# YAML Document ends with ...
+---
+Syscall: clone
+LSM_Probe: task_alloc
+# support uid of new or old cerd
+Condition: "data.clone_flags==0x00000100"
+Action: deny
+More_Info: ""
+...

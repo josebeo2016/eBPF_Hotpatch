@@ -1,0 +1,12 @@
+# YAML Document starts with ---
+# Comments start with #
+# YAML Document ends with ...
+---
+Syscall: fchmod
+LSM_Probe: path_chmod_fix
+# data.inode container the affected path inode 
+# [TODO] $path.inode$
+Condition: "data.newmode==511" 
+Action: deny
+More_Info: ""
+...

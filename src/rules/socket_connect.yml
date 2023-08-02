@@ -1,0 +1,40 @@
+# YAML Document starts with ---
+# Comments start with #
+# YAML Document ends with ...
+---
+Syscall: connect
+LSM_Probe: socket_connect
+# support extract these information:
+# @sa_data: socket address (char[14]) (monitor only)
+# @sock->state: socket status (linux/net.h)
+# typedef enum {
+# 	SS_FREE = 0,			/* not allocated		*/
+# 	SS_UNCONNECTED,			/* unconnected to any socket	*/
+# 	SS_CONNECTING,			/* in process of connecting	*/
+# 	SS_CONNECTED,			/* connected to socket		*/
+# 	SS_DISCONNECTING		/* in process of disconnecting	*/
+# } socket_state;
+# @sock->type: socket type (linux/net.h)
+# enum sock_type {
+# 	SOCK_STREAM	= 1,
+# 	SOCK_DGRAM	= 2,
+# 	SOCK_RAW	= 3,
+# 	SOCK_RDM	= 4,
+# 	SOCK_SEQPACKET	= 5,
+# 	SOCK_DCCP	= 6,
+# 	SOCK_PACKET	= 10,
+# };
+# @sock->flags: socket flag (linux/net.h)
+#define SOCKWQ_ASYNC_NOSPACE	0
+#define SOCKWQ_ASYNC_WAITDATA	1
+#define SOCK_NOSPACE		2
+#define SOCK_PASSCRED		3
+#define SOCK_PASSSEC		4
+# @address->sa_family: socket address family (Ex: AF_INET, etc)
+# @data.remote_port: remote port to connect (int)
+# @data.remote_address: remote address to connect (int)
+# EXAMPLE: Deny established connection with sock->type SOCK_RAW: 
+Condition: "sock->type==SOCK_RAW" 
+Action: deny
+More_Info: ""
+...

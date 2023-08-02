@@ -1,0 +1,10 @@
+# YAML Document starts with ---
+# Comments start with #
+# YAML Document ends with ...
+---
+Syscall: execve
+LSM_Probe: bprm_creds_for_exec
+Condition: "data.new_cred_uid==1" 
+Action: deny
+More_Info: ""
+...

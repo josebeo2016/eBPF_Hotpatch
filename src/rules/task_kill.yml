@@ -1,0 +1,11 @@
+# YAML Document starts with ---
+# Comments start with #
+# YAML Document ends with ...
+---
+Syscall: task_kill
+LSM_Probe: task_kill
+# data.target_pid store the target pid for kill
+Condition: data.target_pid == 913202
+Action: deny
+More_Info: ""
+...

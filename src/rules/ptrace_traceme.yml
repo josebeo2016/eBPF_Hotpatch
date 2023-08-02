@@ -1,0 +1,14 @@
+# YAML Document starts with ---
+# Comments start with #
+# YAML Document ends with ...
+---
+Syscall: ptrace
+LSM_Probe: ptrace_traceme
+# support extract these information:
+# data.parent_flags: parent process flags
+# data.ppid: parent pid
+# EXAMPLE: Allow trace process with ppid < 1000
+Condition: "data.ppid<1000" 
+Action: allow
+More_Info: ""
+...

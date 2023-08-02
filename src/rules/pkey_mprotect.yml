@@ -1,0 +1,17 @@
+# YAML Document starts with ---
+# Comments start with #
+# YAML Document ends with ...
+---
+Syscall: pkey_mprotect
+LSM_Probe: file_mprotect
+# support extract these information:
+# and reqport, prot
+# Details:
+# @vma: virtual memory area (struct vm_area_struct)
+# @reqprot: original request protection opt (PROT_READ, etc.)
+# @prot: real protection opt
+# EXAMPLE: Allow only reqprot = PROT_READ (origin prot from system call mprotect(start, len, prot))
+Condition: "reqprot==PROT_READ" 
+Action: allow
+More_Info: ""
+...

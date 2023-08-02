@@ -1,0 +1,11 @@
+# YAML Document starts with ---
+# Comments start with #
+# YAML Document ends with ...
+---
+Syscall: setreuid
+LSM_Probe: task_fix_setuid
+# support uid of new or old cerd
+Condition: "data.new_uid==1000"
+Action: deny
+More_Info: ""
+...

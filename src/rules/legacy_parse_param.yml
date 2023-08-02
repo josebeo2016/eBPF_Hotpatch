@@ -1,0 +1,13 @@
+# YAML Document starts with ---
+# Comments start with #
+# YAML Document ends with ...
+---
+Syscall: legacy_parse_param
+LSM_Probe: legacy_parse_param
+Condition: "" 
+Action: allow
+More_Info: ""
+...
+    
+    
+      

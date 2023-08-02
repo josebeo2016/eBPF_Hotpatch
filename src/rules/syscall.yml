@@ -1,0 +1,13 @@
+# YAML Document starts with ---
+# Comments start with #
+# YAML Document ends with ...
+---
+Syscall: syscall
+LSM_Probe: syscall
+Condition: ""
+Action: allow
+More_Info: ""
+...
+    
+    
+      
